@@ -1,5 +1,5 @@
 Configuration Structure:
-    myPipeline
+    dalign
     | - build
     | - myPipeline
     | | - __init__.py
@@ -11,6 +11,6 @@ Configuration Structure:
 
 Install Command: 
     If current location is at the parent directory myPipeline, use:
-        "pip install myPipeline" 
+        "pip install dalign" 
     else:
         "pip install absolutePathToMyPipeline/myPipeline"
