@@ -2,10 +2,10 @@ LICENSE
 README.md
 setup.py
 dalign/__init__.py
-dalign/data_verify.py
-dalign/datetime.py
-dalign/missing_value.py
+dalign/missing.py
+dalign/time.py
 dalign/utility.py
+dalign/verify.py
 dalign.egg-info/PKG-INFO
 dalign.egg-info/SOURCES.txt
 dalign.egg-info/dependency_links.txt

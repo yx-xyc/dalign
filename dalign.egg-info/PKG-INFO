@@ -1,11 +1,12 @@
 Metadata-Version: 2.1
 Name: dalign
-Version: 0.1.1
+Version: 0.1.11
 Summary: A simple data cleaning pipeline
 Home-page: https://github.com/yx-xyc/myPipeline
 Author: You
 Author-email: xuyanchong1999@outlook.com
 License: MIT License
+Platform: UNKNOWN
 Description-Content-Type: text/markdown
 License-File: LICENSE
 
@@ -30,3 +31,4 @@ Configuration Structure:
 ```
 
 This packages contains function to help to basic data pre-process, data exploration for numeric, categorical, and datetime variables. 
+

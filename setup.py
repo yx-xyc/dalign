@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 HERE = pathlib.Path(__file__).parent
 
-VERSION = '0.1.1'
+VERSION = '0.1.11'
 PACKAGE_NAME = 'dalign'
 AUTHOR = 'You'
 AUTHOR_EMAIL = 'xuyanchong1999@outlook.com'
