@@ -1,4 +1,4 @@
-'''
+```
 Configuration Structure:
     dalign
     | - build
@@ -16,5 +16,6 @@ Configuration Structure:
     | - LICSNSE
     | - README.md
     | - setup.py
-'''
+```
+
 This packages contains function to help to basic data pre-process, data exploration for numeric, categorical, and datetime variables. 
