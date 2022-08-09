@@ -1,16 +1,20 @@
+'''
 Configuration Structure:
     dalign
     | - build
-    | - myPipeline
+    | - dalign
     | | - __init__.py
-    | | - quality_check.py
+    | | - data_verify.py
+    | | - datetime.py
+    | | - missing_value.py
     | | - utility.py
-    | - myPipeline.egg-info
-    | - readme.txt
+    | - dalign.egg-info
+    | - dist
+    | - examples
+    | - tests
+    | - build_deploy.sh
+    | - LICSNSE
+    | - README.md
     | - setup.py
-
-Install Command: 
-    If current location is at the parent directory myPipeline, use:
-        "pip install dalign" 
-    else:
-        "pip install absolutePathToMyPipeline/myPipeline"
+'''
+This packages contains function to help to basic data pre-process, data exploration for numeric, categorical, and datetime variables. 
