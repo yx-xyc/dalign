@@ -8,7 +8,6 @@ from nltk.corpus import stopwords
 stopwords = stopwords.words('english')
 
 def read_file(path, sep=',', orient=None):
-
     """
     Read CSV file into DataFrame. Also supports reading JSON file, if orient is provided.
 
@@ -31,7 +30,6 @@ def read_file(path, sep=',', orient=None):
      : DataFrame or Series
         The DataFrame or Series contains the data in the input file.
     """
-
     if path[-4:]=='.csv':
         return pd.read_csv(path, sep)
     elif path[-5:]=='.json':
@@ -40,7 +38,6 @@ def read_file(path, sep=',', orient=None):
         raise ValueError("Unrecognized file type")
 
 def clean_string(text):
-
     """
     Clean the punctuation and stopwords in the input string and turn the string to lower case.
 
@@ -53,16 +50,13 @@ def clean_string(text):
     -------
     text : str
         The cleaned string.
-    
     """
-
     text = ''.join([char for char in text if char not in string.punctuation])
     text = text.lower()
     text = ' '.join([word for word in text.split() if word not in stopwords])
     return text
 
 def cosine_sim_vectors(vec1, vec2):
-
     """
     Calculate the cosine similarity between two vectorized strings.
     Two inputs should have the same number of element.
@@ -79,14 +73,12 @@ def cosine_sim_vectors(vec1, vec2):
      : float
         The cosine similarity score of the two given vectorized strings.
     """
-
     vec1 = vec1.reshape(1,-1)
     vec2 = vec2.reshape(1,-1)
     return cosine_similarity(vec1, vec2)[0]
 
 
 def com_sim_cat(df, column, sim_threshold=0.4):
-
     """
     Given a categorical column in a DataFrame, calculate the pairwise cosine similarity score
     in the alphabetic-ordered series of categories. If the similarity score is higher than the sim_threshold, 
@@ -110,7 +102,6 @@ def com_sim_cat(df, column, sim_threshold=0.4):
     repl_dict : dict
         The dictionary the contains the keys that are replaced by the corresponding values.
     """
-
     # clean the target column
     df[column] = df[column].apply(clean_string)
     # initialize the dict to store the value to replace
@@ -134,7 +125,6 @@ def com_sim_cat(df, column, sim_threshold=0.4):
     return df[column].replace(repl_dict), repl_dict
 
 def comp_key(df, column1, column2, key_name, concat_sign=':'):
-
     """    
     Create a new column in the given DataFrame that contains concatenation of two given columns as composite key.
 
@@ -156,6 +146,5 @@ def comp_key(df, column1, column2, key_name, concat_sign=':'):
      : Series
         The column of the composite keys.
     """
-    
     df[key_name] = df[column1] + concat_sign + df[column2]
     return df[key_name]

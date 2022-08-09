@@ -4,7 +4,6 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 def num_var_info(df):
-
     """    
     Show statistics for all the numerical columns in the DataFrame.
 
@@ -14,19 +13,16 @@ def num_var_info(df):
         The DataFrame contains numerical columns to show statistics. The statistics are: 
         count, mean, std, min, 25%, 50%, 75%, max, and range.
 
-
     Returns
     -------
     res : DataFrame
         The DataFrame with the numerical column name as title, and statistics as index.
     """
-    
     res = df.describe()
     res.loc['range'] = res.loc['max',:]-res.loc['min',:]
     return res
 
 def num_var_dist(df, mode='subplot'):
-
     """    
     Plot the value distributions of all numeric columns in the given DataFrame. 
     The plots can be shown one by one or as subplots of a figure.
@@ -40,7 +36,6 @@ def num_var_dist(df, mode='subplot'):
         'subplot' : show all the plots as subplots of a figure.
         'plot' : show all the plots one by one.
     """
-    
     counter = 1
     if (mode=='subplot'):
         plt.figure(figsize=(10,10))
@@ -60,7 +55,6 @@ def num_var_dist(df, mode='subplot'):
         raise ValueError("Wrong Parameter")
 
 def show_outlier(df, column, deviation=2):
-
     """    
     For a given numerical column in a DataFrame, show statistics of this column, 
     number of outliers and all the indexes and values of the outliers 
@@ -80,14 +74,12 @@ def show_outlier(df, column, deviation=2):
      : Series
         The Series with the outliers' indexes as index and outliers' values as value.
     """
-
     print(f'Column name: {column}\n\tMax: {df[column].max()}\n\tMin: {df[column].min()}\n\tRange:{df[column].max()-df[column].min()}\n\tMean:{df[column].mean()}', end='\n\n')
     print(f'Number of Outliers: {len(df[column][abs(df[column] - np.mean(df[column]))>deviation*np.std(df[column])])}')
     print(f'Index\tValue', end='')
     return df[column][abs(df[column] - np.mean(df[column]))>deviation*np.std(df[column])]
 
 def cat_var_type_counts(df):
-
     """
     Given a DataFrame, for all the categorical columns, show how many categories are in each column.
 
@@ -101,7 +93,6 @@ def cat_var_type_counts(df):
      : DataFrame
         The DataFrame contains the categorical column names and the number of category types in each column.
     """
-
     col_num = len([column for column in df.columns if df[column].dtype==object])
     report = []
     counter = 0
@@ -111,7 +102,6 @@ def cat_var_type_counts(df):
     return pd.DataFrame(report, columns=['column_name', 'number_of_category_type'])
 
 def cat_var_vis(df, mode='subplot', max_category_num=10, label_distance=1.5):
-
     """
     Plot the pie charts for categorical columns in the DataFrame to show the percentage of each category.
 
@@ -125,7 +115,6 @@ def cat_var_vis(df, mode='subplot', max_category_num=10, label_distance=1.5):
     label_distance : float
         The distance between category labels.
     """
-
     counter = 1
     if mode=="subplot":
         plt.figure(figsize=(15,15))

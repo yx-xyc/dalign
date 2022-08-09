@@ -2,7 +2,6 @@ import numpy as np
 import pandas as pd
 
 def missing_val_info(df):
-    
     """    
     Show the DataFrame with the column has missing value as index and the missing counts 
     and missing percent of each column.
@@ -17,13 +16,11 @@ def missing_val_info(df):
     res : DataFrame
         The DataFrame that reports missing values.
     """
-    
     res = pd.DataFrame(np.sum(df.isnull())[np.sum(df.isnull())!=0], columns=["Missing"])
     res['Missing Percent %'] = res['Missing']/df.shape[0]
     return res
 
 def handle_missing(df, method="drop"):
-
     """
     Handle the missing value in the DataFrame with the method indicated. 
 
@@ -42,7 +39,6 @@ def handle_missing(df, method="drop"):
      : DataFrame
         The DataFrame with all NaN values handled.
     """
-
     if method=="drop":
         return df.dropna()
     elif method=="forward":
@@ -51,7 +47,6 @@ def handle_missing(df, method="drop"):
         return df.fillna(method='bfill')
 
 def impute(df, column, method="mean"):
-
     """    
     Given a numeric column from a data frame, impute all the NaN value in the column with the indicated method.
 
@@ -72,7 +67,6 @@ def impute(df, column, method="mean"):
      : Series
         The Series with all the NaN values imputed.
     """
-
     if method=="mean":
         return df[column].replace(np.nan, np.nanmean(df[column]))
     elif method=="median":
@@ -81,7 +75,6 @@ def impute(df, column, method="mean"):
         return df[column].replace(np.nan, df[column].value_counts().index[0])
 
 def rolling_impute(df, column, method="mean"):
-
     """    
     Given a numeric column from a data frame, impute all the NaN value in the column with the indicated method.
 
